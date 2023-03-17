@@ -41,6 +41,7 @@ class ListPageActivity : AppCompatActivity(), Callback<MovieResponse> {
         //set listener
         edtSearch.setOnEditorActionListener { textView, i, keyEvent ->
             if (i == EditorInfo.IME_ACTION_SEARCH) {
+                page = 1
                 searchMovie(textView.text.toString())
             }
             true
@@ -120,6 +121,6 @@ class ListPageActivity : AppCompatActivity(), Callback<MovieResponse> {
     }
 
     override fun onFailure(call: Call<MovieResponse>, t: Throwable) {
-        Toast.makeText(this, t.message, 1000)
+        Toast.makeText(this, t.message, Toast.LENGTH_LONG).show()
     }
 }
